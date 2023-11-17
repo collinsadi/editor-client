@@ -1,0 +1,244 @@
+
+
+.playgroundsidebar{
+
+    /* width: 400px; */
+   
+    height: 100%;
+    background-color: var(--sidebar-color);
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition:  0.6s;
+}
+
+.full-sidebar{
+width: 29%;
+
+}
+
+.half-sidebar{
+    width: 5%;
+}
+.half-sidebar .playgroundsidebar-body{
+
+    display: none;
+}
+.half-sidebar .playgroundsidebar-top-left{
+
+    display: none;
+}
+
+
+.playgroundsidebar-inner{
+
+    width: 95%;
+}
+
+.playgroundsidebar-top{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.playgroundsidebar-top-right span{
+
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.playgroundsidebar-top-left{
+
+    width: 50px;
+}
+
+.playgroundsidebar-body{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.playgroundsidebar-body-inner{
+
+    width: 95%;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+
+.sidebar-folder{
+    width: 100%;
+    margin-top: 15px;
+}
+.sidebar-folder:first-child{
+    margin-top: 0;
+}
+
+.sidebarfolder-icon-name{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.sidebarfolder-icon-name{
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 20px;
+}
+.sidebar-folder-name{
+
+    max-width: 85%;
+    margin-left: 5px;
+    color: white;
+}
+
+.sidebarfolder-icon-name p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    white-space: nowrap ;
+}
+
+.sidebar-folder-icon{
+
+    font-size: 30px;
+}
+
+.folder-projects{
+
+    width: 95%;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 5%;
+    border-left: 2px solid var(--orange);
+    padding-left: 10px;
+    flex-direction: column;
+}
+
+.single-projects{
+width: 100%;
+margin-top: 10px;
+}
+
+.project-icon-name{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.project-icon-name p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    color: var(--orange);
+    margin-left: 6px;
+}
+.project-code-files{
+
+    width: 100%;
+
+}
+
+.single-project-file{
+
+    width: 95%;
+    padding-left: 10px;
+    margin-left: 5%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+    border-left: 2px solid white;
+    cursor: pointer;
+}
+
+.project-file-icon{
+
+    background-color: var(--orange);
+    color: white;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.project-file-icon span{
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-file-name p{
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+}
+
+.css{
+    background-color: blue;
+}
+
+.javascript{
+    background-color: orange;
+}
+
+.sidebar-buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+
+.single-button span{
+
+    font-size: 18px;
+    color: var(--orange);
+    cursor: pointer;
+}
+
+
+
+
+
+@media all and (max-width: 840px) {
+    /* your content here */
+    .full-sidebar {
+            width: 90%;
+    
+    }
+    
+        .half-sidebar {
+            width: 10%;
+        }
+}
+
+
+@media all and (max-width: 492px) {
+    /* your content here */
+
+    .half-sidebar {
+            width: 15%;
+        }
+
+}

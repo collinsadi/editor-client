@@ -1,0 +1,59 @@
+.code-area{
+
+    background-color: #1E1E1E;
+    height: 100%;
+    position: fixed;
+    left: 29%;
+    right: 0;
+    top: 0;
+    color: var(--orange);
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    /* padding-left: 20px; */
+    /* padding-top: 20px; */
+    transition: 0.6s;
+    caret-color: red;
+}
+
+.full-codearea{
+width: 95%;
+left: 5%;
+}
+
+.half-codearea{
+width: 71%;
+left: 29%;
+
+}
+
+.code-area::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+@media all and (max-width: 840px) {
+
+
+    .half-codearea{
+
+        display:none;
+
+    }
+
+        .full-codearea {
+            width: 90%;
+            left: 10%;
+        }
+}
+
+@media all and (max-width: 492px) {
+    /* your content here */
+
+    .full-codearea {
+            width: 80%;
+            left: 15%;
+        }
+
+}
