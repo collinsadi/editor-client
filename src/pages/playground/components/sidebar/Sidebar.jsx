@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
 import "./Sidebar.css"
 import logo from "../../../../assets/logo-png-white.png"
+import { Modal } from '../../../../components/modal/Modal'
+
 // import image from "./plgu.png"
 
 // ICOnS
 
 import {BiLeftIndent,BiLogoJavascript} from "react-icons/bi"
-import { BsTextIndentLeft,BsFillFolderSymlinkFill } from "react-icons/bs"
+import { BsTextIndentLeft,BsFillFolderSymlinkFill, BsSignTurnLeft } from "react-icons/bs"
 import { FcFolder, FcOpenedFolder } from "react-icons/fc"
 import { FaFileCode,FaCss3Alt,FaSave } from "react-icons/fa"
 import {AiFillHtml5, AiFillFolderAdd,AiFillLock,AiFillUnlock} from "react-icons/ai"
 
 
-export const Sidebar = ({ showSidebar, setShowSidebar,setLanguage,setCode,setSource,demoFolders }) => {
+export const Sidebar = ({ showSidebar, setShowSidebar,setLanguage,setCode,setSource,demoFolders}) => {
   const [folderOpen, setFolderOpen] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [projectOpen, setProjectOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [currentModal, setCurrentModal] = useState(false);
+  const [autoSave, setAutosave] = useState(true)
 
   const handleSidebarState = () => {
     showSidebar ? setShowSidebar(false) : setShowSidebar(true);
@@ -55,21 +60,67 @@ export const Sidebar = ({ showSidebar, setShowSidebar,setLanguage,setCode,setSou
         const selectedFile = selectedProject.code[type];
 
         // Check if the selected file exists
-        if (selectedFile) {
+        // if (selectedFile) {
 
-          setLanguage(type)
-          setCode(selectedFile)
+        setLanguage(type)
+        setCode(selectedFile ? selectedFile : "")
+    
+
+          console.log(selectedFile)
+          console.log(type)
+
           // Set the content of the selected file to the state
           // setSelectedFileContent(selectedFile.content);
-        }
+        // }
       }
     }
   };
 
+  const handleCloseModal = () => {
+    
+    setShowModal(false)
 
+  }
 
+  const handleShowModal = (modal) => {
+    
+    setCurrentModal(modal)
+    setShowModal(BsSignTurnLeft)
+
+  }
 
   return (
+    <>
+      <Modal modalStatus={showModal} closeHandler={handleCloseModal}>
+        {/* Save Project Modal */}
+
+        {currentModal === "save" && selectedFile && (
+          <div>
+            <p>Save Changes Made to <span>{selectedFile.projectTitle}</span>?</p>
+
+            <button>Save Project</button>
+            <button>Turn Autosave {"On"}</button>
+
+          </div>
+        )}
+
+        {currentModal === "newFolder" && (
+          <div>New Folder</div>
+        )}
+
+        {currentModal === "shareLink" && (
+          <div>Share Folder</div>
+        )}
+
+        {currentModal === "lock" && (
+          <div>Lock Folder</div>
+        )}
+
+        {currentModal === "unlock" && (
+          <div>Unlock Folder</div>
+        )}
+        
+    </Modal>
     <div className={showSidebar ? 'playgroundsidebar full-sidebar' : 'playgroundsidebar half-sidebar'}>
 
       <div className="playgroundsidebar-inner">
@@ -98,19 +149,19 @@ export const Sidebar = ({ showSidebar, setShowSidebar,setLanguage,setCode,setSou
             <div className="sidebar-buttons">
 
               <div title='Save Changes' className="single-button">
-                <span><FaSave /></span>
+                <span onClick={()=> handleShowModal("save")}><FaSave /></span>
               </div>
               <div title='Add Folder' className="single-button">
-                <span><AiFillFolderAdd /></span>
+                <span><AiFillFolderAdd onClick={()=> handleShowModal("newFolder")}/></span>
               </div>
               <div title='Share Folder' className="single-button">
-                <span><BsFillFolderSymlinkFill /></span>
+                  <span><BsFillFolderSymlinkFill onClick={() => handleShowModal("shareLink")} /></span>
               </div>
               <div title='Privatize' className="single-button">
-                <span><AiFillLock /></span>
+                  <span><AiFillLock onClick={() => handleShowModal("lock")} /></span>
               </div>
               <div title='Public' className="single-button">
-                <span><AiFillUnlock /></span>
+                  <span><AiFillUnlock onClick={() => handleShowModal("unlock")} /></span>
               </div>
 
             </div>
@@ -186,5 +237,6 @@ export const Sidebar = ({ showSidebar, setShowSidebar,setLanguage,setCode,setSou
         </div>
       </div>
     </div>
+    </>
   );
 };

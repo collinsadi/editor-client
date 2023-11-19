@@ -1,9 +1,20 @@
 import React from 'react'
 import "./MainCodeArea.css"
 
-export const MainCodeArea = ({ showSidebar, showResult }) => {
+export const MainCodeArea = ({ showSidebar,source, code, setCode,currentType,setSource,language}) => {
+  const handleCodeChange = (e) => {
+    setCode(e.target.value)
+    console.log(currentType)
+    const extractedSource = source
+
+    extractedSource[language] = code
+    
+    setSource(extractedSource)
+    
+    
+  }
   return (
-    <pre><code className='line'><textarea id="editor" className={showSidebar ? 'code-area half-codearea' : "code-area full-codearea"}></textarea></code></pre>
+    <pre><code className='line'><textarea value={code} id="editor" className={showSidebar ? 'code-area half-codearea' : "code-area full-codearea"} onChange={handleCodeChange}></textarea></code></pre>
   )
 }
 
@@ -12,7 +23,7 @@ export const MainCodeArea = ({ showSidebar, showResult }) => {
 // import Editor from "@monaco-editor/react";
 // import './MainCodeArea.css';
 
-// export const MainCodeArea = ({ showSidebar, showResult, language, code, setCode }) => {
+// export const MainCodeArea = ({ showSidebar,language, code, setCode,currentType }) => {
 //   const [theme, setTheme] = useState("vs-dark");
 //   const [isEditorReady, setIsEditorReady] = useState(false);
 

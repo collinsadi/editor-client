@@ -6,33 +6,25 @@ import "./Result.css"
 
 
 
-export const Result = ({showSidebar, setShowSidebar, source}) => {
+export const Result = ({showSidebar, setShowSidebar,source,setSource, code, srcCode, src, setSrc}) => {
 
   const [showResult, setShowResult] = useState(false)
-  const [src, setSrc] = useState('');
 
-    const srcCode = `
-        <html>
-            <body><h1> Hello World </h1></body>
-            <style>h1{color:red;}</style>
-            <script>""</script>
-        </html>
-    `
     // const srcCode = `
     //     <html>
-    //         <body>${source.html}</body>
-    //         <style>${source.css}</style>
-    //         <script>${source.javascript}</script>
+    //         <body>${source?.html ? source?.html: "No Code To Run" }</body>
+    //         <style>${source?.css ? source?.css: "" }</style>
+    //         <script>${source?.javascript ? source?.javascript: "" }</script>
     //     </html>
     // `
-
     useEffect(() => {
         const timeout = setTimeout(() => {
-            setSrc(srcCode);
-        }, 250);
+          setSrc(srcCode);
+          console.log("Changed")
+        }, 200);
 
         return () => clearTimeout(timeout);
-    }, [source, srcCode])
+    }, [source,  srcCode])
 
   const handleShowresult = () => {
     
